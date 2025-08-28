@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Park</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/parks.css') }}">
+    <style>
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-or {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    
+    <div class="container-fluid px-0">
+        <div class="container">
+            <!-- Search Bars -->
+            <div class="search-container">
+                <!-- Search by Park Name -->
+                <input type="text" id="searchByName" class="search-bar" placeholder="Search by park name (ex. Yosemite)" onkeyup="searchParks()">
+                <!-- OR Text -->
+                <span class="search-or">OR</span>
+                <!-- Search by State -->
+                <input type="text" id="searchByState" class="search-bar" placeholder="Search by state (ex. IA)" onkeyup="searchParks()">
+                <button class="search-button" onclick="searchParks()">Search</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Park Listings -->
+            <div class="park-list-container">
+                <h2>Park Listings</h2>
+                <div class="park-list">
+                    {% for park in park_info %}
+                    <div class="park-item">
+                        <h3>{{ park['Park Name'] }}</h3>
+                        <p class="park-location">
+                            {% for city, state in park['City and State'] %}
+                                {{ city }}, {{ state }}{% if not loop.last %} | {% endif %}
+                            {% endfor %}
+                        </p>
+                        <p>{{ park['Description'] }}</p>
+                        <img src="{{ park['Park Image'][0]['url'] if park['Park Image'] else 'path_to_default_image.jpg' }}" alt="{{ park['Park Name'] }}">
+                        <!-- Save to Favorites Form -->
+                        <form method="POST" action="{{ url_for('save_item') }}">
+                            <input type="hidden" name="item" value="{{ park['Park Name'] }}">
+                            <button type="submit">Save to Favorites</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+    </footer>
+
+    <script>
+        // Search functionality
+        function searchParks() {
+            const nameInput = document.getElementById('searchByName').value.toLowerCase();
+            const stateInput = document.getElementById('searchByState').value.toLowerCase().trim();
+            const parkItems = document.querySelectorAll('.park-item');
+
+            parkItems.forEach(item => {
+                const parkName = item.querySelector('h3').textContent.toLowerCase();
+                const parkLocation = item.querySelector('.park-location').textContent.toLowerCase();
+
+                // Match only full state abbreviations or names
+                const stateRegex = new RegExp(`\\b${stateInput}\\b`, 'i');
+
+                // Check if the park matches both filters
+                const nameMatches = !nameInput || parkName.includes(nameInput);
+                const stateMatches = !stateInput || stateRegex.test(parkLocation);
+
+                if (nameMatches && stateMatches) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

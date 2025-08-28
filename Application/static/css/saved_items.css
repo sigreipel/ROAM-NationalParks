@@ -1,0 +1,149 @@
+/* General Body Styling */
+body {
+    font-family: 'Merriweather', serif;
+    background-color: #f9f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Container Styling */
+.container {
+    width: 90%;
+    max-width: 700px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    overflow-y: auto;
+
+    height: 500px;             /* Shorten the height */
+    max-height: 500px;         /* Ensure the container doesn't exceed 350px in height */
+    overflow-y: auto;
+}
+
+/* Heading Styling */
+.container h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #22181cff;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* List Styling */
+.container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* List Item Styling */
+.container li {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Effect for List Items */
+.container li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Item Name Styling */
+.item-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+    color: #ab4967ff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Button Group Styling */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+/* Button Styling */
+.learn-more-button, .remove-button {
+    background-color: #4a7c59; /* Green for Learn More */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+    max-width: 150px;
+}
+
+/* Specific Color for Remove Button */
+.remove-button {
+    background-color: #d9534f; /* Red for Remove */
+}
+
+/* Button Hover Effects */
+.learn-more-button:hover {
+    background-color: #3d6b4f;
+    box-shadow: 0 4px 8px rgba(61, 107, 79, 0.2);
+}
+
+.remove-button:hover {
+    background-color: #c9302c;
+    box-shadow: 0 4px 8px rgba(201, 48, 44, 0.2);
+}
+
+/* Disabled Button Styling */
+.learn-more-button:disabled {
+    background-color: #d6d6d6;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .container li {
+        padding: 15px;
+    }
+
+    .item-name {
+        font-size: 1em;
+    }
+
+    .learn-more-button, .remove-button {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .button-group {
+        gap: 10px;
+    }
+}

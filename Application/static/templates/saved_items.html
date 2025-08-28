@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Saved Items</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/saved_items.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="container">
+        <h1>Your Saved Items</h1>
+        {% if items %}
+            <ul id="saved-items-list">
+                {% for item in items %}
+                <li id="item-{{ item.id }}">
+                    <span class="item-name">{{ item.item }}</span>
+                    <div class="button-group">
+                        <button class="learn-more-button" data-item-name="{{ item.item }}">Learn More</button>
+                        <button class="remove-button" data-item-id="{{ item.id }}">Remove</button>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No items saved yet.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const API_KEY = 'CPp8UQP7oOhv8EmlEDoGWdha5c5faTh4NNwXv32a';
+            const parksApiUrl = `https://developer.nps.gov/api/v1/parks?api_key=${API_KEY}&limit=1000`;
+            const activitiesApiUrl = `https://developer.nps.gov/api/v1/thingstodo?api_key=${API_KEY}`;
+            const learnMoreButtons = document.querySelectorAll('.learn-more-button');
+
+            // Fetch park data
+            async function fetchParks() {
+                try {
+                    const response = await fetch(parksApiUrl);
+                    const data = await response.json();
+                    if (data.data) {
+                        return data.data.reduce((acc, park) => {
+                            acc[park.fullName.toLowerCase()] = `https://www.nps.gov/${park.parkCode}/index.htm`;
+                            return acc;
+                        }, {});
+                    }
+                } catch (error) {
+                    console.error('Error fetching park data:', error);
+                }
+                return {};
+            }
+
+            // Fetch activity data
+            async function fetchActivities() {
+                try {
+                    const response = await fetch(activitiesApiUrl);
+                    const data = await response.json();
+                    if (data.data) {
+                        return data.data.reduce((acc, activity) => {
+                            acc[activity.title.toLowerCase()] = activity.url;
+                            return acc;
+                        }, {});
+                    }
+                } catch (error) {
+                    console.error('Error fetching activity data:', error);
+                }
+                return {};
+            }
+
+            const [parkLinks, activityLinks] = await Promise.all([fetchParks(), fetchActivities()]);
+
+            // Add links to the Learn More buttons
+            learnMoreButtons.forEach(button => {
+                const itemName = button.getAttribute('data-item-name').toLowerCase();
+                const parkUrl = parkLinks[itemName];
+                const activityUrl = activityLinks[itemName];
+
+                if (parkUrl) {
+                    button.addEventListener('click', () => {
+                        window.open(parkUrl, '_blank');
+                    });
+                } else if (activityUrl) {
+                    button.addEventListener('click', () => {
+                        window.open(activityUrl, '_blank');
+                    });
+                } else {
+                    button.disabled = true;
+                    button.textContent = 'No Link Available';
+                }
+            });
+        });
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const removeButtons = document.querySelectorAll('.remove-button');
+
+        removeButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const itemId = button.getAttribute('data-item-id');
+                
+                try {
+                    const response = await fetch('/remove_item', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ item_id: itemId })
+                    });
+
+                    const result = await response.json();
+                    if (result.success) {
+                        // Remove the item element from the DOM
+                        const itemElement = document.getElementById(`item-${itemId}`);
+                        itemElement.remove();
+                    } else {
+                        alert(result.error || 'Error removing item.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to remove item. Please try again.');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

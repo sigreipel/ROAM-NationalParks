@@ -1,0 +1,109 @@
+/* General body styling */
+body {
+    font-family: 'Merriweather', serif;
+    background-color: #f0e5ea; /* Lavender Blush */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Container styling */
+.container {
+    width: 100%;
+    max-width: 450px;
+    background-color: #c77f9b; /* Puce for strong contrast */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 100px; /* To avoid overlap with the fixed navbar */
+}
+
+/* Heading */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+    color: #22181c; /* Licorice */
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Labels */
+form label {
+    font-size: 1em;
+    color: #22181c; /* Licorice */
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Input fields */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    font-family: 'Merriweather', serif;
+    border: 1px solid #ab4967; /* Raspberry Rose */
+    border-radius: 6px;
+}
+
+/* Button styling */
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ab4967; /* Raspberry Rose */
+    color: #fff;
+    font-size: 1em;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #902c54; /* Darker Raspberry Rose */
+}
+
+/* Registration link */
+p {
+    margin-top: 20px;
+    font-family: 'Merriweather', serif;
+    font-size: 0.9em;
+    color: #22181c; /* Licorice */
+}
+
+p a {
+    color: #0e402d; /* British Racing Green */
+    font-family: 'Merriweather', serif;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+footer {
+    background-color: #0e402d; /* British Racing Green */
+    color: #f0e5ea; /* Lavender Blush */
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 0.9em;
+    position: fixed;
+    bottom: 0;
+}

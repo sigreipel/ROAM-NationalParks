@@ -1,0 +1,232 @@
+/* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0e5eaff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;           /* Full viewport height */
+    color: #333;
+    padding-top: 60px;       /* Adjust based on nav height */
+}
+
+/* Poppins font-weight classes */
+.poppins-light {
+    font-weight: 300;
+}
+
+.poppins-regular {
+    font-weight: 400;
+}
+
+.poppins-bold {
+    font-weight: 700;
+}
+
+/* Container Styling */
+.container, .container1 {
+    background-color: #f0e5eaff;
+    padding: 40px;
+    text-align: center;
+    margin: 20px;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+.container1 {
+    max-width: 200px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+h1, h2, h3 {
+    color: #22181cff; /* Licorice */
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #0e402dff; /* Green */
+    font-size: 3em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #22181cff;
+    font-size: 20px;
+}
+
+/* Navigation Styling */
+nav {
+    background-color: #0e402dff; /* British Racing Green */
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    margin: 0;
+    padding: 8px;
+}
+
+.navbar li {
+    padding: 10px;
+    display: inline-block;
+}
+
+.navbar a, .logout, .navbar li form button {
+    display: inline-block;
+    color: #f0e5ea; /* Text color */
+    text-align: center;
+    font-size: 1em;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: #ab4967ff; /* Match nav background */
+}
+
+.navbar a:hover, .logout:hover, .navbar li form button:hover {
+    background-color: #22181c; /* Hover effect */
+    color: #f0e5ea;
+}
+
+/* Adjust layout for logout button */
+.navbar li:last-child {
+    margin-left: auto;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding-top: 100px; /* Adjust for fixed navbar */
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar li {
+        float: none;
+        margin: 5px 0;
+    }
+
+    .logout {
+        width: 100%;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+
+.hero {
+    height: 100vh; /* Full viewport height */
+    background-image: url("https://cdn.masto.host/mastodonart/media_attachments/files/113/069/900/379/469/801/original/344d312ec221bd12.jpg");
+    background-size: cover; /* Ensures the image covers the entire section width */
+    background-position: center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents repeating */
+    display: flex; /* Flexbox for centering the content */
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    text-align: center;
+    position: relative;
+    color: #ab4967ff;
+    overflow: hidden;
+}
+
+/* Optional: Stretch the image for more width */
+@media (min-width: 1200px) {
+    .hero {
+        background-size: 120%; /* Makes the image slightly larger */
+    }
+}
+
+
+/* Content Container Styling */
+.content-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Optional shadow for pop-out effect */
+    max-width: 600px; /* Limits the width of the container */
+    color: #c77f9bff; /* White text color */
+}
+
+/* Heading Styles Inside Content */
+.content-container h1 {
+    font-size: 2.5em; /* Adjust heading size */
+    margin-bottom: 20px;
+}
+
+.content-container p {
+    font-size: 1.2em; /* Adjust paragraph text size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 20px;
+        max-width: 90%; /* Adjust for smaller screens */
+    }
+
+    .content-container h1 {
+        font-size: 2em;
+    }
+
+    .content-container p {
+        font-size: 1em;
+    }
+}
+
+/* Additional Styling for Links */
+a {
+    color: #22181cff; /* Jonquil */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #07A0C3ff; /* Blue-Green */
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #0e402dff; /* Blue-Green */
+    color: #f0e5eaff;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em;
+    z-index: 1000;
+}
+
+footer p {
+    margin: 0;
+}

@@ -1,0 +1,167 @@
+body {
+    font-family: 'Merriweather', serif;
+    background-color: #f0e5eaff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed; /* Keeps the navbar at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #0e402dff; /* Green color for navbar */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    text-align: center;
+}
+
+header {
+    margin-top: 70px; /* Adds space below the fixed navbar */
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #22181cff; /* Licorice */
+}
+
+h2 {
+    color: #22181cff;
+    font-size: 35px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* Activity Dropdown and Button */
+#Activity, #load-parks-btn {
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+#Activity {
+    width: 70%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#load-parks-btn {
+    background-color: #ab4967;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+#load-parks-btn:hover {
+    background-color: #902c54;
+}
+
+/* Parks Container */
+#parks-container {
+    max-height: calc(100vh - 150px); /* Leaves space for the header and footer */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+}
+
+/* Park Cards */
+.park-card {
+    flex: 1 1 calc(100% - 40px); /* Full width in the container */
+    max-width: 800px; /* Optional: Limit max size */
+    margin: 10px auto;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: box-shadow 0.2s ease; /* Only subtle shadow on hover */
+}
+
+/* Hover Effect for Park Cards */
+.park-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Remove scale effect */
+}
+
+.park-card h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #22181cff;
+    margin-bottom: 10px;
+}
+
+.park-card p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #555;
+}
+
+.park-card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: #ab4967;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.park-card a:hover {
+    background-color: #902c54;
+}
+
+/* Save to Favorites Button Styling */
+.park-card form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0e402d; /* British Racing Green */
+    color: #ffffff;
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px; /* Adds space above the button */
+}
+
+.park-card form button:hover {
+    background-color: #092c1f; /* Darker shade of British Racing Green */
+    box-shadow: 0 4px 8px rgba(14, 64, 45, 0.3); /* Subtle shadow for depth */
+}
+
+
+/* Footer */
+footer {
+    background-color: #0e402dff; /* Match the green navigation bar */
+    color: #f0e5eaff; /* Text color */
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+}

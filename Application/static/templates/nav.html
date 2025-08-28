@@ -1,0 +1,20 @@
+<nav>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    </head>
+    <ul class="navbar">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('park_info') }}">Parks</a></li>
+        <li><a href="{{ url_for('things_to_do') }}">Activities</a></li>
+
+        {% if session.get('logged_in') %}
+            <li><a href="{{ url_for('account') }}">Account ({{ session.get('username', 'User') }})</a></li>
+        {% else %}
+            <li><a href="{{ url_for('log_in') }}">Log In</a></li>
+        {% endif %}
+
+    </ul>
+</nav>
+    
